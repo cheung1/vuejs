@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>V-cloak</title>
+        <script src="./lib/vue.js"></script>
+
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="app">
+            <!-- use v-cloak can avoid the insert expression shine -->
+            <p v-cloak>++++++++++++++++++++{{msg}}----------------</p>
+            <!-- v-text diractive defaults no shine problem -->
+            <!-- v-text will reset the elements value, but insert expression will not be influenced -->
+            <h4 v-text="msg">===============</h4>
+            <p>{{ msg }}</p>
+            <div>{{ msg2 }}</div>
+            <div v-text="msg2">546132</div>
+            <div v-html="msg2">3135</div>
+
+            <input type="button" value="button" title="132">
+            <br>
+            <br>
+            <!-- use to bind the properties -->
+            <input type="button" value="button" v-bind:title="mytitle + '123'">
+            <br>
+            <br>
+
+            <input type="button" value="button" :title="mytitle + '123'">
+
+        </div>
+
+        <script>
+            var vm   = new Vue({
+                el: '#app',
+                data: {
+                    msg: '123',
+                    msg2: '<h1>This is a big big big head</h1>',
+                    mytitle: 'this is my title'
+                }
+            });
+        </script>
+    </body>
+</html>

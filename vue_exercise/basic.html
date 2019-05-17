@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title>
+        <!-- 1.import the packages of vue -->
+        <!-- this area is the view story -->
+        <script src="./lib/vue.js"></script>
+    </head>
+    <body>
+        <!-- in the future, the Vue instance will control all the stuff of this elememts -->
+        <div id="app">
+            <p>{{ msg }}</p>
+        </div>
+        <script>
+            // 2.create an instance of Vue
+            // after we import the Vue, Browser has a Vue function that already stored in memory
+            // Attention: this new Vue instance is VM story
+            var vm = new Vue({
+                el: '#app', // represented one specific place which be controlled in page
+                data: { // data properties will store the data of elememts would use, mostly like the Module story, this is the frontend data stored place, used to store each pages data
+                    msg: 'welcome study vue'    // according to the Vue-diractive, easily render the page, no need to manual operate the Dom(document.addEventListener('DOMContentLoaded')) [the frontend framework like Vue is no longer need to manaully operate DOM elememts]
+                }
+            })
+        </script>
+    </body>
+</html>

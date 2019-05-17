@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>跑马灯</title>
+        <script src="./lib/vue.js"></script>
+        <style>
+            [v-cloak]{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="button" @click="run" value="Run">
+            <input type="button" @click="stop" value="Stop">
+            <h3 v-cloak>{{ message }}</h3>
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    message: 'I wanna fly~~~let me fly~~~~~~',
+                    intervalId: null    //define the interval id in global variable
+                },
+                methods: {
+                    run() {
+                        // console.log(vm.message),
+                        // console.log(this.message)
+                        // console.log(this.message.substring(0))
+                        // console.log(this.message.substring(0, 2))
+                        // console.log(this.message.substring(1))
+                        // var _this = this
+                        if (this.intervalId != null) return;
+
+                            this.intervalId = setInterval(() => {
+                                // get the first string
+                                var start = this.message.substring(0, 1);
+                                // get the whole string after 1
+                                var end = this.message.substring(1);
+                                // join the string, set the value into message
+                                this.message = end + start;
+                            }, 400);
+
+
+                    },
+                    stop() {
+                        clearInterval(this.intervalId);
+                        this.intervalId = null;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
